@@ -98,3 +98,5 @@ export EDITOR='micro'
 . "$HOME/.cargo/env"
 
 colorscript -r
+
+export MICRO_TRUECOLOR=1
