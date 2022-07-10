@@ -12,7 +12,7 @@ rmmod pcspkr ; echo "blacklist pcspkr" >>/etc/modprobe.d/blacklist.conf
 exit
 
 # Install packages
-sudo apt install git gh micro rofi nitrogen gnome-backgrounds kitty fonts-firacode thunar mousepad zsh bat
+sudo apt install git gh micro rofi nitrogen gnome-backgrounds kitty fonts-firacode thunar mousepad zsh bat lxappearance
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
