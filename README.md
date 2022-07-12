@@ -61,3 +61,8 @@ config checkout
 config config --local status.showUntrackedFiles no
 
 ```
+
+# Random applications I find useful
+
+- oversteer - configure logitech wheels
+- dotmatrix - create super simple icons and glyphs
