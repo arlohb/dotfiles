@@ -4,6 +4,8 @@
 Start off with Debian XFCE or somethings similar. This is so network, lightdm, and other stuff is already setup for us.
 Someone more intelligent could do this from base Debian.
 
+To start random scripts that run in the background I'm currently using pm2. Systemd would probably be a better fit.
+
 ```bash
 
 # Turn off the horrific beeps
