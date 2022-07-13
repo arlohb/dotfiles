@@ -1,4 +1,3 @@
-
 # Linux the way I like it
 
 Start off with Debian XFCE or somethings similar. This is so network, lightdm, and other stuff is already setup for us.
@@ -12,10 +11,20 @@ rmmod pcspkr ; echo "blacklist pcspkr" >>/etc/modprobe.d/blacklist.conf
 exit
 
 # Install packages
-sudo apt install git gh micro rofi nitrogen gnome-backgrounds kitty fonts-firacode thunar mousepad zsh bat lxappearance
+sudo apt install git gh micro rofi nitrogen gnome-backgrounds kitty fonts-firacode thunar mousepad zsh bat lxappearance playerctl
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
+wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -O code.deb
+sudo apt install ./code.deb
+rm code.deb
+
+# Install cursors
+git clone https://github.com/alvatip/Nordzy-cursors
+cd Nordzy-cursors
+./install.sh
+cd ..
+rm -rf Nordzy-cursors
 
 # Install other fonts
 curl https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
@@ -40,13 +49,11 @@ source ~/.cargo/env
 cargo install exa
 
 # Setup WM
+cd
 git clone https://github.com/arlohb/penrose_arlo.git
 cd penrose_arlo
-sudo apt install build-essential pkg-config libgtk-3-dev libxcb-randr0-dev
-cargo build --release
 nitrogen /usr/share/backgrounds --save
-# You may need to change Exec path to where penrose_arlo is located
-sudo cp penrose_arlo.desktop /usr/share/xsessions/
+./install.sh
 
 # Setup oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
