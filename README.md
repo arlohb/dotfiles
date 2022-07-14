@@ -9,7 +9,7 @@ To start random scripts that run in the background I'm currently using pm2. Syst
 
 ```bash
 
-sudo apt install picom lxpolkit lxappearance xorg lightdm arandr -y
+sudo apt install picom lxpolkit lxappearance xorg lightdm arandr pulseaudio pavucontrol alsa-utils -y
 
 ```
 
