@@ -40,7 +40,7 @@ rm .zshenv
 source ~/.cargo/env
 
 echo "Installing build tools"
-sudo apt install build-essential
+sudo apt install -y build-essential
 
 echo "Installing rust packages"
 cargo install exa
