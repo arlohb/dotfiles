@@ -13,6 +13,8 @@ sudo apt install picom lxpolkit lxappearance xorg lightdm arandr pulseaudio pavu
 
 ```
 
+# After installing X
+
 ```bash
 
 # Turn off the horrific beeps
