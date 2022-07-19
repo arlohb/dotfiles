@@ -4,6 +4,7 @@
 
 - Install debian wihout a desktop environment
 - Get this repository (only bit of manual scripting)
+    - ```sudo apt install -y git```
     - ```alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'```
     - ```echo ".cfg" >> .gitignore```
     - ```git clone --bare https://github.com/arlohb/dotfiles $HOME/.cfg```
