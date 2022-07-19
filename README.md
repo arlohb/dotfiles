@@ -117,3 +117,4 @@ config config --local status.showUntrackedFiles no
 
 - oversteer - configure logitech wheels
 - dotmatrix - create super simple icons and glyphs
+- [libresprite](https://libresprite.github.io/) - free fork of aseprite
