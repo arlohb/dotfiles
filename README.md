@@ -5,7 +5,7 @@ Someone more intelligent could do this from base Debian.
 
 To start random scripts that run in the background I'm currently using pm2. Systemd would probably be a better fit.
 
-## Without X
+# Without X
 
 ```bash
 
