@@ -35,3 +35,7 @@ rm -rf shell-color-scripts
 
 echo -e "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo -e "Cleaning up oh-my-zsh"
+rm .zshrc
+mv .zshrc.pre-oh-my-zsh .zshrc
