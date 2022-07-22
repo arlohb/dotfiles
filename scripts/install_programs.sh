@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e "Installing programs with apt"
-sudo apt install -y gnome-screenshot feh zip unzip curl neofetch bat mousepad thunar kitty nitrogen rofi micro git gh zsh
+sudo apt install -y gnome-screenshot feh zip unzip curl neofetch bat mousepad thunar kitty nitrogen rofi micro git gh zsh nala
 
 echo -e "Installing Fira Code"
 sudo apt install fonts-firacode -y
