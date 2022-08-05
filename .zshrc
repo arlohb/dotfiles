@@ -69,6 +69,10 @@ less_termcap[md]="${fg_bold[blue]}"
 export EDITOR='micro'
 
 . "$HOME/.cargo/env"
+export PATH="$HOME/.local/bin:$PATH"
+
+# Vim keybindings
+bindkey -v
 
 export MICRO_TRUECOLOR=1
 
