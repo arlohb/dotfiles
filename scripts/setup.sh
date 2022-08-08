@@ -10,7 +10,7 @@ echo -e "Installing DT's backgrounds"
 sudo git clone https://gitlab.com/dwt1/wallpapers.git /usr/share/backgrounds/dt
 
 echo -e "Installing gnome backgrounds"
-sudo apt install gnome-backgrounds
+sudo nala install gnome-backgrounds
 
 echo -e "\nSelecting wallpaper."
 echo -e "Remember to change mode to 'Zoomed Fill'."

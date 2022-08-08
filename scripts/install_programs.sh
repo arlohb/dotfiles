@@ -1,10 +1,20 @@
 #!/bin/bash
 
-echo -e "Installing programs with apt"
-sudo apt install -y gnome-screenshot feh zip unzip curl neofetch bat mousepad thunar kitty nitrogen rofi micro git gh zsh nala
+echo -e "Installing programs with nala"
+sudo nala install -y gnome-screenshot feh zip unzip curl neofetch bat mousepad thunar kitty nitrogen rofi micro git gh zsh fonts-firacode
 
-echo -e "Installing Fira Code"
-sudo apt install fonts-firacode -y
+echo -e "Installing rofi-calc"
+sudo nala install -y rofi-dev qalc libtool
+git clone https://github.com/svenstaro/rofi-calc
+cd rofi-calc
+autoreconf -i
+mkdir build
+cd build
+../configure
+make
+sudo make install
+cd
+rm -rf rofi-calc
 
 echo -e "Installing FiraCode Nerd Font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
@@ -26,13 +36,8 @@ rm -rf Nordzy-cursors
 
 echo -e "Installing chrome"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O chrome.deb
-sudo apt install -y ./chrome.deb
+sudo nala install -y ./chrome.deb
 rm chrome.deb
-
-echo -e "Installing VS Code"
-wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O code.deb
-sudo apt install -y ./code.deb
-rm code.deb
 
 echo -e "Installing rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -40,10 +45,18 @@ rm .zshenv
 source ~/.cargo/env
 
 echo -e "Installing build tools"
-sudo apt install -y build-essential
+sudo nala install -y build-essential
 
 echo -e "Installing rust packages"
 cargo install exa
+
+echo -e "Installing spacemacs"
+git clone git://git.sv.gnu.org/emacs.git
+cd emacs
+make
+sudo make install
+cd
+rm -rf emacs
 
 echo -e "Installing penrose_arlo WM"
 cd
