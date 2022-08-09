@@ -12,6 +12,12 @@
     - ```config config --local status.showUntrackedFiles no```
 - ```./scripts/main.sh```
 
+## How to get wifi working on debian server
+
+- Install network-manager - ```sudo apt install network-manager```
+- Comment network interfaces (not loopback) in `/etc/network/interfaces` so they can be managed by NetworkManager
+- Use ```nmtui``` or ```nmcli``` to manage network
+
 ## Random applications I find useful
 
 - oversteer - configure logitech wheels
