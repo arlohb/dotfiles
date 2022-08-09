@@ -2,7 +2,7 @@
 
 ## Using
 
-- Install debian wihout a desktop environment
+- Install debian without a desktop environment
 - Get this repository (only bit of manual scripting)
     - ```sudo apt install -y git```
     - ```alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'```
