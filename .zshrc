@@ -1,4 +1,8 @@
-colorscript -r
+if type "dotacat" > /dev/null; then
+	colorscript -r | dotacat
+else
+	colorscript -r
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -68,7 +72,10 @@ less_termcap[md]="${fg_bold[blue]}"
 
 export EDITOR='micro'
 
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi
+
 export PATH="$HOME/.local/bin:$PATH"
 
 # Vim keybindings
@@ -76,5 +83,5 @@ bindkey -v
 
 export MICRO_TRUECOLOR=1
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/.config/p10k.zsh.
+[[ ! -f ~/.config/p10k.zsh ]] || source ~/.config/p10k.zsh
