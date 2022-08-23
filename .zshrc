@@ -70,7 +70,7 @@ source $ZSH/oh-my-zsh.sh
 # Configure the colour of colored-man-pages
 less_termcap[md]="${fg_bold[blue]}"
 
-export EDITOR='micro'
+export EDITOR='vim'
 
 if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
@@ -80,8 +80,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Vim keybindings
 bindkey -v
-
-export MICRO_TRUECOLOR=1
 
 # To customize prompt, run `p10k configure` or edit ~/.config/p10k.zsh.
 [[ ! -f ~/.config/p10k.zsh ]] || source ~/.config/p10k.zsh
