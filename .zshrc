@@ -5,43 +5,26 @@ else
 	colorscript -r
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Where omz is installed
-export ZSH="$HOME/.oh-my-zsh"
-
-# Omz's theme, modify ~/.config/p10k.zsh to change
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Disable omz automatic updates
-zstyle ':omz:update' mode disabled
-
-# Where omz's custom plugins, themes, and scripts are placed
-ZSH_CUSTOM=$HOME/omz_custom
-
-# The plugins enabled in omz
-plugins=(
-	timer
-	git
-	colored-man-pages
-	command-not-found
-	history-substring-search
-)
-
-# Run omz
-source $ZSH/oh-my-zsh.sh
-
-# Configure the colour of colored-man-pages
-less_termcap[md]="${fg_bold[blue]}"
-
 # Set the default editor,
 # many programs use this
 export EDITOR='lvim'
+
+alias ls='exa -la --header --git --icons --no-time'
+
+if ! type "bat" > /dev/null; then
+	alias bat='batcat'
+fi
+alias cat='bat --theme=Dracula --color=always'
+
+ghc() { git clone https://github.com/"$@"; }
+alias gd='git diff'
+alias config='git --git-dir=$HOME/.cfg --work-tree=$HOME'
+alias configsync='config add -u && date | config commit -F - && config push'
+
+alias shutdown='sudo shutdown -h now'
+
+alias df='df -h'
+alias dff='df /'
 
 # If ~/.cargo/env exists, run it
 if [ -f "$HOME/.cargo/env" ]; then
@@ -54,6 +37,5 @@ export PATH="$HOME/.local/bin:$PATH"
 # Enable vim keybindings in the terminal
 bindkey -v
 
-# Run powerlevel10k
-[[ ! -f ~/.config/p10k.zsh ]] || source ~/.config/p10k.zsh
+eval "$(starship init zsh)"
 
