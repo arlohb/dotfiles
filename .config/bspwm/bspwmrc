@@ -2,7 +2,8 @@
 
 setxkbmap gb
 
-.config/bspwm/screen.sh
+[ -f ".config/bspwm/screen.sh" ] && .config/bspwm/screen.sh
+
 nitrogen --restore
 
 killall -q sxhkd picom
