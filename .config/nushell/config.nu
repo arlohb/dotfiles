@@ -363,6 +363,17 @@ alias dc = dots commit -m
 alias dpl = dots pull
 alias dp = dots push
 
+# git alias to manage /etc
+alias etc = sudo git --git-dir=/etc/.cfg --work-tree=/etc
+
+# git aliases for etc
+alias ei = etc diff
+alias es = etc status
+alias ea = etc add
+alias ec = etc commit -m
+alias epl = etc pull
+alias ep = etc push
+
 # generic aliases
 alias ls = ls -a
 alias vim = lvim
