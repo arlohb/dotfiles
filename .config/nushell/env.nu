@@ -60,3 +60,8 @@ let-env NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
+let-env RUSTUP_HOME = $"($env.XDG_DATA_HOME)/rustup"
+let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
+let-env GTK2_RC_FILES = $"($env.XDG_CONFIG_HOME)/gtk-2.0/gtkrc"
+
