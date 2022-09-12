@@ -2,6 +2,9 @@
 
 setxkbmap gb
 
+# Remap caps lock to escape
+setxkbmap -option caps:escape
+
 [ -f ".config/bspwm/screen.sh" ] && .config/bspwm/screen.sh
 
 nitrogen --restore
