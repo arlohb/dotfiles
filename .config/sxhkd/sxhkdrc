@@ -11,6 +11,9 @@ super + b
 super + @space
 	rofi -show drun
 
+super + l
+  ~/scripts/lock.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
