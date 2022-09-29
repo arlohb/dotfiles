@@ -11,7 +11,7 @@ super + b
 super + @space
 	rofi -show drun
 
-super + l
+super + ctrl + l
   ~/scripts/lock.sh
 
 # make sxhkd reload its configuration files:
