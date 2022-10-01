@@ -70,6 +70,25 @@ return require('packer').startup(function(use)
     -- Show thin lines at indents
     use "lukas-reineke/indent-blankline.nvim"
 
+    -- Comment and uncomment lines easily
+    use "tpope/vim-commentary"
+
+    -- Autopair brackets and others
+    use {
+        "windwp/nvim-autopairs",
+        config = function()
+            local Rule = require("nvim-autopairs.rule")
+            local cond = require("nvim-autopairs.conds")
+            local npairs = require("nvim-autopairs")
+
+            require("nvim-autopairs").setup{}
+
+            npairs.add_rule(Rule("<", ">")
+                :with_move(cond.move_right)
+            )
+        end
+    }
+
 
     -- If packer was just installed, sync it
     if packer_bootstrap then
