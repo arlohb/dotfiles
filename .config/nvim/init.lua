@@ -1,10 +1,7 @@
 -- https://mattermost.com/blog/how-to-install-and-set-up-neovim-for-code-editing/
 
--- Leader
--- These keybindings need to be defined before the first /
--- is called; otherwise, it will default to "\"
+-- Make the leader key <space>
 vim.g.mapleader = ' '
--- vim.g.localleader = "\\"
 
 local opt = vim.opt
 
@@ -42,20 +39,5 @@ opt.splitbelow = true            -- bool: Place new window below the current one
 opt.timeoutlen = 200
 
 require("plugins")
+require("keys")
 
-require("nvim-tree").setup{}
-
-local map = vim.api.nvim_set_keymap
-
--- Toggle nvim-tree
-map("n", "<leader>n", ":NvimTreeToggle<CR>", {})
-
-vim.g.catppuccin_flavour = "mocha"
-require("catppuccin").setup()
-vim.cmd[[colorscheme catppuccin]]
-
-require("lualine").setup {
-    options = {
-        theme = "catppuccin"
-    }
-}
