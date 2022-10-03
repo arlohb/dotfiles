@@ -36,12 +36,12 @@ return require('packer').startup(function(use)
 
     -- The theme
     use {
-        "catppuccin/nvim",
-        as = "catppuccin",
+        "navarasu/onedark.nvim",
         config = function()
-            vim.g.catppuccin_flavour = "mocha"
-            require("catppuccin").setup()
-            vim.cmd[[colorscheme catppuccin]]
+            require("onedark").setup {
+                style = "cool"
+            }
+            require("onedark").load()
         end
     }
 
@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
         config = function()
             require("lualine").setup {
                 options = {
-                    theme = "catppuccin"
+                    theme = "onedark"
                 }
             }
         end
@@ -86,6 +86,28 @@ return require('packer').startup(function(use)
             npairs.add_rule(Rule("<", ">")
                 :with_move(cond.move_right)
             )
+        end
+    }
+
+    -- Autocompletion
+    use {
+        "neoclide/coc.nvim",
+        branch = "release"
+    }
+
+    -- Github Copilot
+    use "github/copilot.vim"
+
+    -- Treesitter
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                hightlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false
+                }
+            }
         end
     }
 

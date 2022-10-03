@@ -13,3 +13,9 @@ map("n", "-", ":Commentary<CR>", {})
 -- Comment the current selection
 map("v", "-", ":'<,'>Commentary<CR>", {})
 
+-- Goto definition
+map("n", "gd", ":call CocActionAsync('jumpDefinition')<CR>", {})
+-- Show documentation
+map("n", "K", ":call CocActionAsync('doHover')<CR>", {})
+
+vim.keymap.set("n", "<leader>a", "<Plug>(coc-snippets-expand-jump)")
