@@ -23,6 +23,12 @@ wk.register({
             d = {"<cmd>close<cr>", "Close"},
         },
 
+        l = {
+            name = "+lsp",
+            a = {"<cmd>call CocActionAsync('codeAction', 'cursor')<cr>", "Code Action"},
+            r = {"<cmd>call CocActionAsync('rename')<cr>", "Rename"},
+        },
+
         n = {"<cmd>NvimTreeToggle<cr>", "Toggle NvimTree"},
 
         t = {"<cmd>FloatermToggle<cr>", "Toggle Terminal"},
