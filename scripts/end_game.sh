@@ -1,0 +1,2 @@
+picom --experimental-backends &
+
