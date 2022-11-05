@@ -12,7 +12,7 @@
     - ```config config --local status.showUntrackedFiles no```
 - ```./scripts/main.sh```
 
-## How to get wifi working on debian server
+## How to get wifi working on a barebones install
 
 - Install network-manager - ```sudo apt install network-manager```
 - Comment network interfaces (not loopback) in `/etc/network/interfaces` so they can be managed by NetworkManager
