@@ -5,15 +5,22 @@ setxkbmap gb
 # Remap caps lock to escape
 setxkbmap -option caps:escape
 
+# Run screen.sh if it exists
+# This should contain the xrandr command,
+# workspace setup for each monitor
+# e.g. bspc monitor ^1 -d 1 2
+#  to put workspaces 1 and 2 on monitor 1
 [ -f ".config/bspwm/screen.sh" ] && .config/bspwm/screen.sh
 
 nitrogen --restore
 
 killall -q sxhkd picom
-sxhkd &
-picom --experimental-backends &
 
-# bspc monitor -d I II III IV V VI VII VIII IX X
+# Unfortunatly this means I can't see sxhkd's errors,
+# but without it the programs it launches clutters the logs
+sxhkd  > /dev/null 2>&1 &
+
+picom --experimental-backends &
 
 bspc config border_width         2
 bspc config window_gap          12
