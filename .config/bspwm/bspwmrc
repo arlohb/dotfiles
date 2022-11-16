@@ -12,6 +12,10 @@ setxkbmap -option caps:escape
 #  to put workspaces 1 and 2 on monitor 1
 [ -f ".config/bspwm/screen.sh" ] && .config/bspwm/screen.sh
 
+# Run ~/scripts/touchpad.sh if it exists
+# This script is to setup tap to click, etc.
+[ -f "./scripts/touchpad.sh" ] && ./scripts/touchpad.sh
+
 nitrogen --restore
 
 killall -q sxhkd picom
