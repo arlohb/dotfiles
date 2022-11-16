@@ -23,6 +23,8 @@ sxhkd  > /dev/null 2>&1 &
 picom &
 
 bspc config border_width         2
+bspc config focused_border_color \#bd93f9
+bspc config normal_border_color \#6272a4
 bspc config window_gap          12
 
 bspc config borderless_monocle   true
