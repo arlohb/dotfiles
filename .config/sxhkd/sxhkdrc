@@ -8,6 +8,9 @@ super + Return
 super + b
 	vivaldi-stable
 
+super + shift + b
+    vivaldi-stable --incognito
+
 super + @space
 	rofi -show drun
 
