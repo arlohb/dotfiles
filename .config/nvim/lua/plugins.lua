@@ -116,6 +116,14 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Git diffs in file
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end
+    }
+
 
     -- If packer was just installed, sync it
     if packer_bootstrap then
