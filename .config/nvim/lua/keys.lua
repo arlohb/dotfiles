@@ -29,6 +29,14 @@ wk.register({
             r = {"<cmd>call CocActionAsync('rename')<cr>", "Rename"},
         },
 
+        g = {
+            name = "+git",
+            d = {"<cmd>Gitsigns diffthis<cr>", "Diff"},
+            s = {"<cmd>Gitsigns stage_hunk<cr>", "Stage"},
+            u = {"<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage"},
+            p = {"<cmd>Gitsigns preview_hunk<cr>", "Preview"},
+        },
+
         n = {"<cmd>NvimTreeToggle<cr>", "Toggle NvimTree"},
 
         t = {"<cmd>FloatermToggle<cr>", "Toggle Terminal"},
