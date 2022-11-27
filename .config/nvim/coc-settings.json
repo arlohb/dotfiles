@@ -3,5 +3,5 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "rust"
     ],
-    "rust-analyzer.checkOnSave.command": "clippy"
+    "rust-analyzer.checkOnSave.command": "cranky"
 }
