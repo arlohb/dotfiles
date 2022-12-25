@@ -52,9 +52,9 @@ wk.register({
     ["<Esc>"] = {"<cmd>FloatermToggle<cr>", "Quit Terminal", mode = "t"},
 
     -- Comment the current line
-    ["-"] = {"<cmd>Commentary<CR>", "Comment Line"},
+    [";"] = {"<cmd>Commentary<CR>", "Comment Line", mode = "n"},
     -- Comment the current selection
-    ["-"] = {":'<,'>Commentary<CR>", "Comment Line", mode = "v"},
+    [";"] = {":'<,'>Commentary<CR>", "Comment Line", mode = "v"},
 
     -- Goto definition
     gd = {"<cmd>call CocActionAsync('jumpDefinition')<cr>", "Goto Definition"},
