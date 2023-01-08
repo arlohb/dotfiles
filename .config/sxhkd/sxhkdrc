@@ -8,11 +8,11 @@ super + Return
 
 # Browser
 super + b
-	vivaldi-stable
+	vivaldi-stable --new-window https://www.google.com
 
 # Incognito browser
 super + shift + b
-    vivaldi-stable --incognito
+    vivaldi-stable --incognito --new-window https://duckduckgo.com
 
 # Program launcher
 super + space
