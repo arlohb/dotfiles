@@ -322,7 +322,6 @@ let-env config = {
 
 # add to path
 let-env PATH = ($env.PATH | append "~/.local/bin")
-let-env PATH = ($env.PATH | append "~/.platformio/penv/bin")
 let-env PATH = ($env.PATH | append "~/.local/share/cargo/bin")
 
 # environment variables
@@ -357,7 +356,7 @@ def dff [filesystem?: string] {
   echo $data
 }
 
-# Run a gui then disown it
+# Run a gui/bg process then disown it
 def launch [command: string] {
     bash -c $"($command) &> /dev/null & disown"
 }
