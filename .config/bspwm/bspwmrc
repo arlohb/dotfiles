@@ -1,4 +1,8 @@
-#! /bin/sh
+#!/bin/nu
+
+# Load my nushell config,
+# mainly just for my launch command
+source ~/.config/nushell/config.nu
 
 # ========
 # System
@@ -20,11 +24,17 @@ xsetroot -cursor_name left_ptr
 # and workspace setup for each monitor
 # e.g. bspc monitor ^1 -d 1 2
 #  to put workspaces 1 and 2 on monitor 1
-[ -f ".config/bspwm/screen.sh" ] && .config/bspwm/screen.sh
+if ("~/.config/bspwm/screen.sh" | path exists) {
+    bash ~/.config/bspwm/screen.sh
+}
 
 # Run ~/scripts/touchpad.sh if it exists
 # This script is to setup tap to click, etc.
-[ -f "./scripts/touchpad.sh" ] && ./scripts/touchpad.sh
+if ("~/scripts/touchpad.sh" | path exists) {
+    # This may fail
+    try { bash ~/scripts/touchpad.sh }
+}
+
 
 # ===========
 # Autostart
@@ -32,26 +42,29 @@ xsetroot -cursor_name left_ptr
 
 # Kill sxhkd and picom
 # -q is to not error if they are not running
-killall -q sxhkd picom
+# This doesn't seem to work in nushell,
+# so it is also in a try block
+try { killall -q sxhkd picom }
+
 # Restore the wallpaper
 nitrogen --restore
 # Wait for sxhkd and picom to die
-sleep 0.5
-sxhkd > /dev/null 2>&1 &
-picom &
+sleep 0.5sec
+launch sxhkd
+launch picom
 
 # ==============
 # BSPWM config
 # ==============
 
-bspc config focus_follows_pointer true
+bspc config focus_follows_pointer   true
 
 # ===============
 # BSPWM colours
 # ===============
 
-bspc config border_width         2
-bspc config focused_border_color \#bd93f9
-bspc config normal_border_color \#6272a4
-bspc config window_gap          12
+bspc config border_width            2
+bspc config focused_border_color    "#bd93f9"
+bspc config normal_border_color     "#6272a4"
+bspc config window_gap              12
 
