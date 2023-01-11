@@ -40,6 +40,8 @@ wk.register({
         n = {"<cmd>NvimTreeToggle<cr>", "Toggle NvimTree"},
 
         t = {"<cmd>FloatermToggle<cr>", "Toggle Terminal"},
+
+        v = {"<cmd>Vista!!<cr>", "Toggle Vista"},
     },
 
     -- Moving between windows
