@@ -116,6 +116,11 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- LSP based symbols outline
+    use {
+        "liuchengxu/vista.vim",
+    }
+
     -- Git diffs in file
     use {
         "lewis6991/gitsigns.nvim",
