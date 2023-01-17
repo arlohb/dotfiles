@@ -322,6 +322,8 @@ let-env config = {
 
 # add to path
 let-env PATH = ($env.PATH | append "~/.local/bin")
+let-env PATH = ($env.PATH | append "~/.emacs.d/bin")
+let-env PATH = ($env.PATH | append "~/.local/share/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin")
 let-env PATH = ($env.PATH | append "~/.local/share/cargo/bin")
 
 # environment variables
