@@ -59,6 +59,8 @@ launch picom
 
 bspc config focus_follows_pointer   true
 
+bspc rule -a Emacs state=tiled
+
 # ===============
 # BSPWM colours
 # ===============
