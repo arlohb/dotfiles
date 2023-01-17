@@ -4,7 +4,11 @@
 
 # Terminal
 super + Return
-	kitty
+    emacsclient --create-frame --alternate-editor="emacs" --eval "(+vterm/here nil)"
+
+# Emacs
+super + e
+    emacsclient --create-frame --alternate-editor="emacs"
 
 # Browser
 super + b
