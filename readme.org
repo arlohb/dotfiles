@@ -1,0 +1,85 @@
+#+title: Linux the way I like it
+
+This is an overview of how my linux system fits together.
+
+* The base
+
+** Arch Linux
+- *Barebones* - perfect for a window manager setup
+- *Bleeding Edge* - software is always the latest version, allowing you to use
+  features as soon as they're released
+- *Community Driven* - the AUR means I don't have to build packages myself,
+and the arch wiki knows seemingly everything you could ever need to know
+
+** Linux Zen Kernel
+There's no one big reason for this, but as the Arch Wiki puts it, it is a
+"Result of a collaborative effort of kernel hackers to provide the best Linux
+kernel possible for everyday systems". So why not?
+
+** System-wide dotfiles
+See the org doc [[/etc/readme.org][here]] for more info.
+The repo needs to be at /etc for this to work,
+if not, get it from [[https://github.com/arlohb/etc][here]].
+
+* Essentials
+
+** Booting - EFISTUB
+While I do dual boot Windows and Linux, I just use the BIOS if I need to boot
+into Windows.
+
+This is so much faster than grub, and worth the effort it takes to set up.
+
+** Network - Network Manager
+For wired this should just work automatically, for wireless I use ~nmtui~ to
+choose the network.
+
+** Package management - Yup
+Of course Arch Linux uses pacman for package management, but I use yup as a
+wrapper around it and as an AUR helper.
+
+It's a tui, making it the only package manager with a *usable* search.
+
+** Shell(s)
+*** Fish
+- Currently my login shell
+- Feels a lot like the starship prompt but by default and better
+
+*** Nushell
+- Don't want to delete
+- It's a really nice shell
+- But too many things don't work
+
+* The UI
+
+** Display manager - Ly
+- *Simple*
+- *Fast*
+- *Minimalist*
+
+** Display server - Wayland
+I chose wayland over Xorg. It's probably fair to assume everyone will switch
+over at some point, so why not do it now.
+
+** Window manager / compositor - Hyprland
+- *Dynamic* - Splits windows by default like Bspwm
+- *Beautiful* - Comes with beautiful animations by default
+- *Reliable* - Compared to picom, the compositor effects *all work*, with no
+  visual artifacts
+
+* Dotfiles
+
+My dotfiles are stored in a repo on github.
+
+Use these commands to run them.
+#+begin_src bash
+alias dots='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+echo ".cfg" >> .gitignore
+git clone --bare https://github.com/arlohb/dotfiles $HOME/.cfg
+dots checkout dots config --local status.showUntrackedFiles no
+#+end_src
+
+* Random applications I find useful
+
+- oversteer - configure logitech wheels
+- dotmatrix - create super simple icons and glyphs
+- [[https://libresprite.github.io/][libresprite]] - free fork of aseprite
