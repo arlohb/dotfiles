@@ -49,6 +49,9 @@
 (setq mouse-wheel-follow-mouse 't)
 (setq scroll-step 1)
 
+;; Enable rust format-on-save
+(setq rustic-format-on-save t)
+
 ;; Disable exit confirmation
 (setq confirm-kill-emacs nil)
 
