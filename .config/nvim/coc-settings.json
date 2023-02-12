@@ -1,7 +1,0 @@
-{
-    "rust-analyzer.inlayHints.enable": false,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "rust"
-    ],
-    "rust-analyzer.checkOnSave.command": "cranky"
-}

@@ -1,26 +1,9 @@
--- Download packer plugin manager if it's not installed
--- https://github.com/wbthomason/packer.nvim#bootstrapping
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-
+return {
     -- The file tree
-    use {
+    {
         'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        cmd = { "NvimTreeToggle" },
         config = function()
             require("nvim-tree").setup {
                 diagnostics = {
@@ -28,111 +11,182 @@ return require('packer').startup(function(use)
                     show_on_dirs = true,
                 },
             }
-        end
-    }
+        end,
+    },
 
     -- The tooltips when pressing a partial chord
-    use {
+    {
         "folke/which-key.nvim",
         config = function()
             require("which-key").setup {}
-        end
-    }
+        end,
+    },
 
-    -- The theme
-    use {
-        "navarasu/onedark.nvim",
+    -- The theme(s)
+    {
+        "sainnhe/sonokai",
         config = function()
-            require("onedark").setup {
-                style = "cool"
-            }
-            require("onedark").load()
-        end
-    }
+            vim.g.sonokai_style = "andromeda"
+            vim.g.sonokai_better_performance = 1
+            vim.cmd("colorscheme sonokai")
+        end,
+    },
 
     -- The line at the bottom
-    use {
+    {
         "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("lualine").setup {
                 options = {
-                    theme = "onedark"
-                }
+                    theme = "auto",
+                },
             }
-        end
-    }
+        end,
+    },
 
     -- A fuzzy finder
-    use {
+    {
         "nvim-telescope/telescope.nvim",
-        requires = "nvim-lua/plenary.nvim"
-    }
+        dependencies = "nvim-lua/plenary.nvim",
+        lazy = true,
+        cmd = "Telescope",
+        config = function()
+            require("telescope").setup {
+                pickers = {
+                    colorscheme = {
+                        enable_preview = true
+                    },
+                },
+            }
+        end,
+    },
+
+    -- A file browser for telescope
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = "nvim-telescope/telescope.nvim",
+        config = function()
+            require("telescope").load_extension("file_browser")
+        end,
+    },
+
+    -- A project manager with telescope
+    {
+        "nvim-telescope/telescope-project.nvim",
+        dependencies = "nvim-telescope/telescope.nvim",
+        config = function()
+            require("telescope").load_extension("project")
+        end,
+    },
+
+    -- Populates telescopes symbol picker
+    {
+        "nvim-telescope/telescope-symbols.nvim",
+        dependencies = "nvim-telescope/telescope.nvim",
+    },
 
     -- A floating terminal
-    use "voldikss/vim-floaterm"
+    "voldikss/vim-floaterm",
 
     -- Show thin lines at indents
-    use "lukas-reineke/indent-blankline.nvim"
+    "lukas-reineke/indent-blankline.nvim",
 
     -- Comment and uncomment lines easily
-    use "tpope/vim-commentary"
+    "tpope/vim-commentary",
 
     -- Autopair brackets and others
-    use {
+    {
         "windwp/nvim-autopairs",
         config = function()
             local Rule = require("nvim-autopairs.rule")
             local cond = require("nvim-autopairs.conds")
             local npairs = require("nvim-autopairs")
 
-            require("nvim-autopairs").setup{}
+            require("nvim-autopairs").setup {}
 
             npairs.add_rule(Rule("<", ">")
                 :with_move(cond.move_right)
             )
-        end
-    }
-
-    -- Autocompletion
-    use {
-        "neoclide/coc.nvim",
-        branch = "release"
-    }
-
-    -- Github Copilot
-    use "github/copilot.vim"
+        end,
+    },
 
     -- Treesitter
-    use {
+    {
         "nvim-treesitter/nvim-treesitter",
         config = function()
             require("nvim-treesitter.configs").setup {
                 hightlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = false
-                }
+                    additional_vim_regex_highlighting = false,
+                },
             }
-        end
-    }
+        end,
+    },
 
     -- LSP based symbols outline
-    use {
-        "liuchengxu/vista.vim",
-    }
+    "liuchengxu/vista.vim",
 
     -- Git diffs in file
-    use {
+    {
         "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
+        end,
+    },
+
+    -- Connects native LSP to nvim-cmp
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        lazy = false,
+        priority = 1000,
+        dependencies = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' }, -- Required
+            { 'williamboman/mason.nvim' }, -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' }, -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'hrsh7th/cmp-buffer' }, -- Optional
+            { 'hrsh7th/cmp-path' }, -- Optional
+            -- { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+            { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' }, -- Required
+            -- { 'rafamadriz/friendly-snippets' }, -- Optional
+        }
+    },
+
+    -- Start screen
+    {
+        "glepnir/dashboard-nvim",
+        event = "VimEnter",
+        dependencies = "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("dashboard").setup {
+                theme = "doom",
+                config = {
+                    -- header = {},
+                    center = {
+                        {
+                            icon = " ",
+                            desc = "Find File",
+                            key = "b",
+                            action = "lua print(2)",
+                        },
+                        {
+                            icon = " ",
+                            desc = "Projects",
+                            key = "SPC f p",
+                        },
+                    },
+                    -- footer = {},
+                },
+            }
         end
     }
-
-
-    -- If packer was just installed, sync it
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-end)
-
+}
