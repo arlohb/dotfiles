@@ -1,5 +1,20 @@
 -- https://mattermost.com/blog/how-to-install-and-set-up-neovim-for-code-editing/
 
+-- My hostnames,
+-- used to switch between some config values
+local pc = "arlo-arch"
+local laptop = "arlo-laptop2"
+
+local f = io.open("/etc/hostname", "r")
+local hostname
+if f == nil then
+    hostname = "arlo-arch"
+else
+    hostname = f:read("*l")
+    f:close()
+end
+
+
 local opt = vim.opt
 local g = vim.g
 
@@ -9,7 +24,12 @@ g.mapleader = ' '
 
 -- Gui
 opt.guifont = { "FiraCode Nerd Font", "h10" }
-g.neovide_scale_factor = 0.7
+if hostname == pc then
+    g.neovide_scale_factor = 0.7
+end
+if hostname == laptop then
+    g.neovide_scale_factor = 0.55
+end
 g.neovide_hide_mouse_when_typing = true
 g.neovide_remember_window_size = false
 g.neovide_cursor_antialiasing = true
