@@ -10,8 +10,6 @@ g.mapleader = ' '
 -- Gui
 opt.guifont = { "FiraCode Nerd Font", "h10" }
 g.neovide_scale_factor = 0.7
-g.neovide_floating_blur_amount_x = 2.0
-g.neovide_floating_blur_amount_y = 2.0
 g.neovide_hide_mouse_when_typing = true
 g.neovide_remember_window_size = false
 g.neovide_cursor_antialiasing = true
