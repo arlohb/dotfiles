@@ -65,13 +65,11 @@ require("which-key").register({
         }
 
     },
-
     -- Moving between windows
     ["<C-h>"] = { "<C-w>h", "Go Left" },
     ["<C-l>"] = { "<C-w>l", "Go Right" },
     ["<C-j>"] = { "<C-w>j", "Go Down" },
     ["<C-k>"] = { "<C-w>k", "Go Up" },
-
     -- Quit the terminal while inside it
     ["<Esc>"] = { "<cmd>FloatermToggle<cr>", "Quit Terminal", mode = "t" },
 })

@@ -106,7 +106,7 @@ return {
             require("nvim-autopairs").setup {}
 
             npairs.add_rule(Rule("<", ">")
-                :with_move(cond.move_right)
+            :with_move(cond.move_right)
             )
         end,
     },
@@ -188,5 +188,8 @@ return {
                 },
             }
         end
-    }
+    },
+
+    -- Yuck (eww) syntax support
+    "elkowar/yuck.vim",
 }
