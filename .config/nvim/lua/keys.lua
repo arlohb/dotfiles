@@ -33,8 +33,8 @@ require("which-key").register({
 
         c = {
             name = "+code",
-            a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-            r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+            a = { vim.lsp.buf.code_action, "Code Action" },
+            r = { vim.lsp.buf.rename, "Rename" },
             R = { "<cmd>Telescope lsp_references<cr>", "References" },
             i = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
             s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
@@ -62,7 +62,18 @@ require("which-key").register({
             s = { "<cmd>Vista!!<cr>", "Symbols" },
             l = { "<cmd>Lazy<cr>", "Lazy" },
             m = { "<cmd>Mason<cr>", "Mason" },
-        }
+        },
+
+        d = {
+            name = "+debug",
+            c = { require("dap").continue, "Continue" },
+            l = { require("dap").step_over, "Step over" },
+            j = { require("dap").step_into, "Step into" },
+            k = { require("dap").step_out, "Step out" },
+            b = { require("dap").toggle_breakpoint, "Toggle Breakpoint" },
+            r = { "<cmd>RustRunnables<cr>", "Runnables" },
+            d = { "<cmd>RustDebuggables<cr>", "Debuggables" },
+        },
 
     },
     -- Moving between windows

@@ -135,30 +135,44 @@ return {
         end,
     },
 
-    -- Connects native LSP to nvim-cmp
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        lazy = false,
-        priority = 1000,
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end,
+    },
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    "simrat39/rust-tools.nvim",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/vim-vsnip",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lua",
+
+    {
+        "mfussenegger/nvim-dap",
         dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            { 'williamboman/mason.nvim' }, -- Optional
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            "theHamsta/nvim-dap-virtual-text",
+            "rcarriga/nvim-dap-ui",
+        },
+    },
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'hrsh7th/cmp-buffer' }, -- Optional
-            { 'hrsh7th/cmp-path' }, -- Optional
-            -- { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-            { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+    -- DAP telescope plugin
+    {
+        "nvim-telescope/telescope-dap.nvim",
+        dependencies = "nvim-telescope/telescope.nvim",
+        config = function()
+            require("telescope").load_extension("dap")
+        end,
+    },
 
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' }, -- Required
-            -- { 'rafamadriz/friendly-snippets' }, -- Optional
-        }
+    -- Makes ui nicer
+    {
+        "stevearc/dressing.nvim",
+        config = function()
+            require("dressing").setup({})
+        end,
     },
 
     -- Start screen

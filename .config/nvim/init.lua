@@ -71,5 +71,5 @@ opt.timeoutlen = 200
 require("lazy_config")
 
 require("plugins")
-require("lsp")
+require("rust")
 require("keys")
