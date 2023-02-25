@@ -58,7 +58,7 @@ require("which-key").register({
         o = {
             name = "+open",
             p = { "<cmd>NvimTreeToggle<cr>", "File Tree" },
-            t = { "<cmd>FloatermToggle<cr>", "Terminal" },
+            t = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
             s = { "<cmd>Vista!!<cr>", "Symbols" },
             l = { "<cmd>Lazy<cr>", "Lazy" },
             m = { "<cmd>Mason<cr>", "Mason" },
@@ -82,7 +82,7 @@ require("which-key").register({
     ["<C-j>"] = { "<C-w>j", "Go Down" },
     ["<C-k>"] = { "<C-w>k", "Go Up" },
     -- Quit the terminal while inside it
-    ["<Esc>"] = { "<cmd>FloatermToggle<cr>", "Quit Terminal", mode = "t" },
+    ["<Esc>"] = { "<cmd>ToggleTerm direction=float<cr>", "Quit Terminal", mode = "t" },
 })
 
 vim.keymap.set("n", ";", "<cmd>Commentary<cr>", { desc = "Comment" })

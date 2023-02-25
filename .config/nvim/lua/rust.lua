@@ -28,6 +28,13 @@ rt.setup({
                 check = {
                     command = "cranky",
                 },
+                -- https://github.com/rust-lang/rust-analyzer/issues/7497#issuecomment-770243115
+                cargo = {
+                    loadOutDirsFromCheck = true,
+                },
+                procMacro = {
+                    enable = true,
+                },
             },
         },
     },

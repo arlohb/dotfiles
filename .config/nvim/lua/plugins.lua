@@ -18,7 +18,11 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
-            require("which-key").setup {}
+            require("which-key").setup {
+                window = {
+                    winblend = 50
+                },
+            }
         end,
     },
 
@@ -86,8 +90,18 @@ return {
         dependencies = "nvim-telescope/telescope.nvim",
     },
 
-    -- A floating terminal
-    "voldikss/vim-floaterm",
+    {
+        "akinsho/toggleterm.nvim",
+        config = function()
+            require("toggleterm").setup({
+                autochdir = true,
+                float_opts = {
+                    -- border = "curved",
+                    -- winblend = 50,
+                },
+            })
+        end
+    },
 
     -- Show thin lines at indents
     "lukas-reineke/indent-blankline.nvim",
@@ -149,6 +163,13 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
+
+    -- This connects non lsp stuff
+    -- into the native lsp
+    "jose-elias-alvarez/null-ls.nvim",
+
+    -- JS/TS formatting
+    "MunifTanjim/prettier.nvim",
 
     {
         "mfussenegger/nvim-dap",
