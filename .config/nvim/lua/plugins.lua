@@ -95,9 +95,10 @@ return {
         config = function()
             require("toggleterm").setup({
                 autochdir = true,
+                shade_terminals = false,
                 float_opts = {
-                    -- border = "curved",
-                    -- winblend = 50,
+                    border = "curved",
+                    winblend = 50,
                 },
             })
         end
@@ -227,4 +228,8 @@ return {
 
     -- Yuck (eww) syntax support
     "elkowar/yuck.vim",
+
+    -- Remove when neovim 0.9 comes out
+    -- It has inbuilt support for this
+    "gpanders/editorconfig.nvim",
 }

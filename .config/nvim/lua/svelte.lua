@@ -21,18 +21,6 @@ require("lspconfig").tsserver.setup {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" })
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" })
         vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Goto type definition" })
-
-        vim.api.nvim_create_autocmd("BufWritePost", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                -- Quick hack but it works lol
-                -- (As long as the format cmd exists)
-                -- io.popen("npm run format")
-                -- Refresh the buffer
-                -- vim.cmd[[e!]]
-            end,
-        })
     end,
     settings = {
         typescript = {
@@ -72,4 +60,6 @@ require("lspconfig").svelte.setup {
 }
 
 require("lspconfig").eslint.setup {}
+
+require("lspconfig").tailwindcss.setup {}
 

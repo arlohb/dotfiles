@@ -2,12 +2,16 @@
 -- https://github.com/folke/which-key.nvim
 require("which-key").register({
     ["<leader>"] = {
-        ["<leader>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+        -- https://github.com/skbolton/titan/blob/4d0d31cc6439a7565523b1018bec54e3e8bc502c/nvim/nvim/lua/mappings/filesystem.lua#L6
+        ["<leader>"] = { function()
+            require("telescope.builtin").find_files({
+                find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}
+            )
+        end, "Find File" },
         [":"] = { "<cmd>Telescope commands<cr>", "Commands" },
 
         f = {
             name = "+file",
-            f = { "<cmd>Telescope find_files<cr>", "Find File" },
             r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
             p = { "<cmd>Telescope project<cr>", "Projects" },
         },
@@ -58,7 +62,8 @@ require("which-key").register({
         o = {
             name = "+open",
             p = { "<cmd>NvimTreeToggle<cr>", "File Tree" },
-            t = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
+            t = { "<cmd>ToggleTerm 1 direction=float<cr>", "Terminal Float" },
+            T = { "<cmd>ToggleTerm 2 direction=vertical<cr>", "Terminal Bar" },
             s = { "<cmd>Vista!!<cr>", "Symbols" },
             l = { "<cmd>Lazy<cr>", "Lazy" },
             m = { "<cmd>Mason<cr>", "Mason" },
