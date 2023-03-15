@@ -69,7 +69,7 @@
   ; wayland
   :exclusive true
   :focusable false
-  :stacking "overlay"
+  :stacking "fg"
 
   :monitor 0
 
