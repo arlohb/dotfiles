@@ -52,6 +52,11 @@
 ;; Enable rust format-on-save
 (setq rustic-format-on-save t)
 
+(setq treemacs-git-mode 'deferred)
+
+;; Change the org-journal directory to the one in onedrive
+(setq org-journal-dir "~/onedrive/journal")
+
 ;; Disable exit confirmation
 (setq confirm-kill-emacs nil)
 
